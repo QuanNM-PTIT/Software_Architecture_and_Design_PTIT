@@ -21,7 +21,7 @@ Bài tập lớn môn Kiến trúc và thiết kế phần mềm thầy TĐQ
             </td>
             <td align="center">
                 <a href="https://github.com/TrucThanh12">
-                    <img src="./photo/Truc.jpg" width="100px;" alt=""/>
+                    <img src="./photo.jpg" width="100px;" alt=""/>
                     <br />
                     <sub><b>Phan Thanh Trúc</b></sub>
                 </a>

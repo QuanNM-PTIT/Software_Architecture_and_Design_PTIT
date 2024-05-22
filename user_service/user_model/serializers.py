@@ -50,7 +50,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['account', 'email', 'phone', 'fullname', 'address','address_','first_name', 'last_name', 'username', 'password']
+        fields = ['id', 'account', 'email', 'phone', 'fullname', 'address','address_','first_name', 'last_name', 'username', 'password']
         depth = 1
 
     def create(self, validated_data):
@@ -73,7 +73,6 @@ class UserSerializer(serializers.ModelSerializer):
         fullname = Fullname.objects.create(first_name=fullname_data['first_name'], last_name=fullname_data['last_name'])
 
         user = User.objects.create(account=account, address=address, fullname=fullname, **validated_data)
-
         return user
 
 

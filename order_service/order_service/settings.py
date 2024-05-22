@@ -13,8 +13,8 @@ SECRET_KEY = 'django-insecure-)*ar7#9u)8*6-^f9=q5@oyk62(%jt=)&6nv0ceuxcm_ph5s#+m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+PORT = 8005
 
 # Application definition
 
@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'order'
 ]
 
 MIDDLEWARE = [
@@ -64,8 +66,12 @@ WSGI_APPLICATION = 'order_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydb',
+        'USER': 'postgres',
+        'PASSWORD': 'trucdien1812',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
@@ -110,3 +116,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOW_CREDENTIALS = True

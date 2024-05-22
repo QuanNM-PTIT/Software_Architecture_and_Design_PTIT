@@ -13,8 +13,8 @@ SECRET_KEY = 'django-insecure-iz-0u$=*r&bnbx12^(5l%+5fux_dqi&o3r9ne6r+gut%zb&!h8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+PORT = 8006
 
 # Application definition
 
@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'ship_status'
 ]
 
 MIDDLEWARE = [
@@ -64,8 +66,12 @@ WSGI_APPLICATION = 'shipment_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydb',
+        'USER': 'postgres',
+        'PASSWORD': 'trucdien1812',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 

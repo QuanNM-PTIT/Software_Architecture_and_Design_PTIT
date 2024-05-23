@@ -16,7 +16,8 @@ DEBUG = True
 
 PORT = 8002
 CORS_ALLOW_ALL_ORIGINS = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "http://localhost:8001", "http://localhost:8003"]
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition

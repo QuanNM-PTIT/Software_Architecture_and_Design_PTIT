@@ -13,7 +13,11 @@ SECRET_KEY = 'django-insecure-@^f4js3q-rvv)*atc9)4f7ywymm*6=3y_zyj0s#@1smoobsrip
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+PORT = 8003
+CORS_ALLOW_ALL_ORIGINS = True
+
+ALLOWED_HOSTS = ["*"]
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition
@@ -25,16 +29,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'cart',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware'
 ]
 
 ROOT_URLCONF = 'cart_service.urls'
@@ -64,8 +72,12 @@ WSGI_APPLICATION = 'cart_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cart_service',  # Tên database bạn đã tạo
+        'USER': 'root',      # Tên user MySQL
+        'PASSWORD': 'Thanhhuyen2002',  # Mật khẩu MySQL
+        'HOST': 'localhost',   # Địa chỉ host MySQL (thường là localhost)
+        'PORT': '3306',        # Cổng MySQL (mặc định là 3306)
     }
 }
 
@@ -88,6 +100,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',  # Bạn cũng có thể sử dụng Session Authentication nếu cần thiết
+    ],
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

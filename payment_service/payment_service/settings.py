@@ -12,8 +12,9 @@ SECRET_KEY = 'django-insecure-d%pfq71cdtvb7zvqc5q#sop=u0b7bv+v*45cx*exag4!l=2a=-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+CORS_ALLOW_ALL_ORIGINS = True
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+PORT = 8007
 
 
 # Application definition
@@ -25,6 +26,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'payment',
+    'corsheaders',
+    'shipment_update'
 ]
 
 MIDDLEWARE = [
@@ -35,6 +40,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'payment_service.urls'
@@ -62,10 +69,15 @@ WSGI_APPLICATION = 'payment_service.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydb',
+        'USER': 'postgres',
+        'PASSWORD': 'trucdien1812',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 

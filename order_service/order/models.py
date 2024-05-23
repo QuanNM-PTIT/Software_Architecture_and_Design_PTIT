@@ -8,5 +8,6 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(null=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    payment_id = models.IntegerField(null=False)
-    shipment_id = models.IntegerField(null=Fasle)
+    payment_id = models.IntegerField(null=True)
+    shipment_id = models.IntegerField(null=True)
+    total = models.IntegerField(null=True)

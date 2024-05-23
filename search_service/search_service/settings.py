@@ -1,4 +1,6 @@
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -10,10 +12,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-c#j=*7h!=0y06i6vk#1j=nov9ysqo)b_e$nsv4$j@_y%p^8bs@'
 
+load_dotenv(os.path.join(BASE_DIR, 'env/.env'))
+
+PRODUCT_SERVICE_BOOK_URL = os.getenv("PRODUCT_SERVICE_BOOK_URL")
+PRODUCT_SERVICE_MOBILE_URL = os.getenv("PRODUCT_SERVICE_MOBILE_URL")
+PRODUCT_SERVICE_CLOTHES_URL = os.getenv("PRODUCT_SERVICE_CLOTHES_URL")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+PORT=8003
 
 
 # Application definition
@@ -25,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "search.apps.SearchConfig",
 ]
 
 MIDDLEWARE = [
